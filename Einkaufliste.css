@@ -3,7 +3,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: 12% 88%;
-    grid-template-rows: 10% 1fr;
+    grid-template-rows: 15% 1fr;
     grid-template-areas:
         "header header"
         "sidebar content"
@@ -17,10 +17,29 @@
 
 .header {
   grid-area: header;
-  background-color: orange;
+  background-color: rgba(192, 229, 226, 0.849);
 }
 
 .content {
   grid-area: content;
   background-color: red;
+}
+.rewe-logo{
+  height: 55px;
+  width: 70px;
+  padding-left: 40px;
+  padding-top: 22px;
+}
+.müller-logo{
+  height: 25px;
+  width: 115px;
+  padding-left: 40px;
+  padding-bottom: 18px;
+}
+.headerSchrift{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  
+ 
 }
