@@ -2,17 +2,20 @@
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-columns: 12% 88%;
+    grid-template-columns: 15% 88%;
     grid-template-rows: 15% 1fr;
     grid-template-areas:
         "header header"
         "sidebar content"
         "footer footer"
 }
+body{
+  margin: 0;
+}
 
 .sidebar {
   grid-area: sidebar;
-  background-color: green;
+  background-color: rgba(192, 229, 226, 0.199);
 }
 
 .header {
@@ -22,19 +25,33 @@
 
 .content {
   grid-area: content;
-  background-color: red;
+  background-color: rgba(195, 229, 192, 0.555);
 }
 .rewe-logo{
   height: 55px;
   width: 70px;
   padding-left: 40px;
-  padding-top: 22px;
+  
 }
 .müller-logo{
   height: 25px;
   width: 115px;
-  padding-left: 40px;
+  padding-left: 80px;
   padding-bottom: 18px;
+}
+.dm-logo{
+  height: 70px;
+  width: 100px;
+  padding-left: 700px;
+  
+  
+}
+.aldi-logo{
+  height: 80px;
+  width: 70px;
+  padding-left: 100px;
+  
+  
 }
 .headerSchrift{
   align-items: center;
@@ -42,4 +59,56 @@
   display: flex;
   
  
+}
+
+.sidebar-Header{
+  text-align: center;
+  color: rgb(221, 105, 27);
+}
+.sidebar-border{
+  border: 1px solid rgb(255, 102, 0);
+  background-image: linear-gradient(-90deg, rgb(192, 91, 23) 20%, rgb(14, 13, 13) 70%);
+  text-align: center;
+  color: antiquewhite;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+li{
+  list-style: none;
+  text-align: left;
+  
+}
+.sidebar-neueListe{
+  border: 1px solid antiquewhite;
+  margin-top: 400px;
+  background-image: linear-gradient(-90deg, rgb(192, 91, 23) 20%, rgb(14, 13, 13) 70%);
+  color: antiquewhite;
+  padding-left: 50px;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.contentheader{
+  text-align: center;
+}
+.contenteintagen{
+  border: 2px solid black;
+  margin-left: 50px;
+  margin-right: 50px;
+
+}
+
+.contentpositionen{
+  border: 1px solid black;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+ 
+
+}
+ul{
+  padding: 10px;
 }
