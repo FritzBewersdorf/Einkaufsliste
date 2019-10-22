@@ -26,12 +26,14 @@
         <h1 class="contentheader">Einkaufsliste</h1>
         <h2 class="contenteintagen" >+ Eintragen
            <label >
-        <input type="text" size="120" class="cssdesign" 
-        name="vorname" 
-        placeholder="+ Neue Position" 
-        onfocus="this.placeholder = ''" 
-        onblur="this.placeholder = '+ Neue Position'">
-        </label>
+             <form action="https://shopping-lists-api.herokuapp.com" method="post" target="_blank">
+                <input type="text" size="120" class="cssdesign"
+                name="vorname" 
+                placeholder="+ Neue Position" 
+                onfocus="this.placeholder = ''" 
+                onblur="this.placeholder = '+ Neue Position'">
+              </form>
+            </label>
         </h2>
        
         <ul class="contentpositionen"> 
@@ -56,7 +58,7 @@
 
 
     </div>
-
+    
 
   </body>
 </html>
