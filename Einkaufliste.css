@@ -39,10 +39,16 @@ body{
   padding-left: 80px;
   padding-bottom: 18px;
 }
+.überschrift{
+  width: 250px;
+  height: 100px;
+  margin-left: 250px;
+  padding-top: 10px;
+}
 .dm-logo{
   height: 70px;
   width: 100px;
-  padding-left: 700px;
+  padding-left: 150px;
   
   
 }
@@ -119,3 +125,8 @@ ul{
   margin-bottom: 5px;
   text-align: center;
   }
+
+  .buttonposition{
+    margin-left: 400px;
+  }
+ 
