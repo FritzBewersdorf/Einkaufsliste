@@ -23,10 +23,19 @@
 
       <div class="content">
         <h1 class="contentheader">Einkaufsliste</h1>
-        <h2 class="contenteintagen">+ Eintragen</h2>
-        <ul class="contentpositionen">
-        <li >1.Position</li>
-        <li>2.Position</li>
+        <h2 class="contenteintagen" >+ Eintragen
+           <label >
+        <input type="text" size="120" class="cssdesign" 
+        name="vorname" 
+        placeholder="Neue Position" 
+        onfocus="this.placeholder = ''" 
+        onblur="this.placeholder = 'Neue Position'">
+        </label>
+        </h2>
+       
+        <ul class="contentpositionen"> 
+        <li >1.Position <label><input type="checkbox" name="color" value="Absolviert"> Absolviert</label><label><input type="checkbox" name="color" value="offen"> offen</label></li>
+        <li>2.Position <label><input type="checkbox" name="color" value="Absolviert"> Absolviert</label><label><input type="checkbox" name="color" value="offen"> offen</label></li>
       </ul>
       </div>
 
