@@ -63,34 +63,33 @@
       <div class="sidebar">
         <h2 class="sidebar-Header"> 
       Deine Listen</h2>
-      <li class="sidebar-border">Universal - Einkausliste<br><a href="#1" style="color: yellow">Auswählen</a></li>
-      <li class="sidebar-border">Rewe - Einkausliste<br><a href="#2"style="color: yellow">Auswählen</a></li>
-      <li class="sidebar-border">Penny - Einkausliste<br><a href="#3" style="color: yellow">Auswählen</a></li>
-      <li class="sidebar-border">DM - Einkausliste<br><a href="#4" style="color: yellow">Auswählen</a></li>
-      <li class="sidebar-border">Aldi - Einkausliste<br><a href="#5" style="color: yellow">Auswählen</a></li>
+      <li id="eins" class="sidebar-border">Universal - Einkausliste<br><a href="#1" style="color: yellow">Auswählen</a></li>
+      <li id="zwei"class="sidebar-border">Rewe - Einkausliste<br><a href="#2"style="color: yellow">Auswählen</a></li>
+      <li id="drei"class="sidebar-border">Penny - Einkausliste<br><a href="#3" style="color: yellow">Auswählen</a></li>
+      <li id="vier"class="sidebar-border">DM - Einkausliste<br><a href="#4" style="color: yellow">Auswählen</a></li>
+      <li id="fuenf"class="sidebar-border">Aldi - Einkausliste<br><a href="#5" style="color: yellow">Auswählen</a></li>
       <li class="sidebar-neueListe">+ Neue Liste</a> </li>
 
-
       </div>
-
-
-
     </div>
     <script>
-      var listen = [
-        liste1,
-        liste2,
-        liste3,
-        liste4
-      ]
+      var listId = "";
+      document.getElementById("zwei").addEventListener('click',function(){
+        listId = "5db2b146e3d42a0017c30a1b"; 
+      });
+      document.getElementById("drei").addEventListener('click',function(){
+        listId = "5daf699814fb6000179e69b3"; 
+      });
+      document.getElementById("vier").addEventListener('click',function(){
+        listId = "5db2b150e3d42a0017c30a1c"; 
+      });
+      document.getElementById("fuenf").addEventListener('click',function(){
+        listId = "5db2b154e3d42a0017c30a1d"; 
+      });
 
-      var selectedList = liste1
-
-      selectedListId
-        var listId = "5daf699814fb6000179e69b3"; 
-        var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items";
         document.getElementById("form").addEventListener('submit', function() {
             var item = document.getElementById("itemName").value;
+            var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items";
             fetch(apiUrl, {
                 method: "POST",
                 headers: {
