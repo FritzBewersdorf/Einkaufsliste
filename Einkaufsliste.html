@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <link rel="stylesheet" href="Einkaufliste.css">
   </head>
@@ -12,26 +14,42 @@
 
       <div class="header">
         <!--<h2 class="headerSchrift"> Zu gut zu vergessen </h2>-->
-        <a href="https://www.rewe.de/angebote/nationale-angebote/" target="_blank"><img src="Rewe-logo.png" class="rewe-logo" ></a>
-        <a href="https://www.mueller.de/prospekte/" target="_blank"><img src="Müller-logo.png" class="müller-logo" ></a>
-        <img src="Überschrift.png.jpeg" class="überschrift" >
-        <a href="https://www.marktjagd.de/dm-drogerie-markt:a27" target="blank"><img src="Dm-logo.png" class="dm-logo"></a>
-        <a href="https://www.marktjagd.de/dm-drogerie-markt:a27" target="blank"><img src="aldi-logo.png" class="aldi-logo"></a>
-        
+        <ul>
+          <li>
+            <a href="https://www.rewe.de/angebote/nationale-angebote/" target="_blank"><img src="Rewe-logo.png" class="rewe-logo" ></a>
+          </li>
+          <li>
+            <a href="https://www.mueller.de/prospekte/" target="_blank"><img src="Müller-logo.png" class="müller-logo" >
+            </a>
+          </li> 
+          <li>
+            <h1>Zu gut zum vergessen</h1>
+          </li>
+          <li>
+            <a href="https://www.marktjagd.de/dm-drogerie-markt:a27" target="blank"><img src="Dm-logo.png" class="dm-logo"></a>
+          </li>
+          <li>
+            <a href="https://www.aldi-sued.de/de/angebote/?pk_campaign=01_GEO_ALDI_Brand_Always_On_Exact[NEO]&pk_kwd=aldiangebotediesewoche" target="blank"><img src="aldi-logo.png" class="aldi-logo"></a>
+          </li>
+        </ul> 
         
       </div>
 
 
       <div class="content">
         <h1 class="contentheader">Einkaufsliste</h1>
-        <h2 class="contenteintagen" >+ Eintragen
-           <label >
-             <form action="https://shopping-lists-api.herokuapp.com" method="post" target="_blank">
-                <input type="text" size="120" class="cssdesign"
-                name="vorname" 
-                placeholder="+ Neue Position" 
-                onfocus="this.placeholder = ''" 
-                onblur="this.placeholder = '+ Neue Position'">
+        <h2 class="contenteintagen" >
+            <label >
+                
+                <form id="form" action="#">
+                   +Eintragen<input type="text" size="120" class="cssdesign" id="itemName"
+                   placeholder="+ Neue Position" 
+                   onfocus="this.placeholder = ''" 
+                   onblur="this.placeholder = '+ Neue Position'">
+                   <button type="submit">Submit</button> 
+                   
+                 </form>
+               </label>
               </form>
             </label>
         </h2>
@@ -45,12 +63,12 @@
       <div class="sidebar">
         <h2 class="sidebar-Header"> 
       Deine Listen</h2>
-      <li class="sidebar-border">Universal - Einkausliste</li>
-      <li class="sidebar-border">Rewe - Einkausliste</li>
-      <li class="sidebar-border">Penny - Einkausliste</li>
-      <li class="sidebar-border">DM - Einkausliste</li>
-      <li class="sidebar-border">Aldi - Einkausliste</li>
-      <li class="sidebar-neueListe">+ Neue Liste </li>
+      <li class="sidebar-border">Universal - Einkausliste<br><a href="#1" style="color: yellow">Auswählen</a></li>
+      <li class="sidebar-border">Rewe - Einkausliste<br><a href="#2"style="color: yellow">Auswählen</a></li>
+      <li class="sidebar-border">Penny - Einkausliste<br><a href="#3" style="color: yellow">Auswählen</a></li>
+      <li class="sidebar-border">DM - Einkausliste<br><a href="#4" style="color: yellow">Auswählen</a></li>
+      <li class="sidebar-border">Aldi - Einkausliste<br><a href="#5" style="color: yellow">Auswählen</a></li>
+      <li class="sidebar-neueListe">+ Neue Liste</a> </li>
 
 
       </div>
@@ -58,7 +76,31 @@
 
 
     </div>
-    
+    <script>
+      var listen = [
+        liste1,
+        liste2,
+        liste3,
+        liste4
+      ]
 
+      var selectedList = liste1
+
+      selectedListId
+        var listId = "5daf699814fb6000179e69b3"; 
+        var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items";
+        document.getElementById("form").addEventListener('submit', function() {
+            var item = document.getElementById("itemName").value;
+            fetch(apiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name: item })
+            }).then(res => res.json())
+            .then(json => console.log(json));
+            
+        });
+    </script>
   </body>
 </html>
