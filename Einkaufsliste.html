@@ -47,7 +47,7 @@
                    placeholder="+ Neue Position" 
                    onfocus="this.placeholder = ''" 
                    onblur="this.placeholder = '+ Neue Position'">
-                   <button type="submit">Submit</button> 
+                   <button type="submit">Eingabe</button> 
                    
                  </form>
                </label>
@@ -55,22 +55,28 @@
             </label>
         </h2>
        
-        <ul class="contentpositionen"> 
-        <li >1.Position <label><input type="checkbox" name="color" value="Absolviert"> Absolviert</label><label><input type="checkbox" name="color" value="offen"> offen</label></li>
-        <li>2.Position <label><input type="checkbox" name="color" value="Absolviert"> Absolviert</label><label><input type="checkbox" name="color" value="offen"> offen</label></li>
-      </ul>
+        <div class="contentinhalt" id="inhaltDerSeite">
+          <h1>Liste für alles</h1>
+          <ul id="listeintrag">  
+            <li class="listeneinträge">
+              Hier kann du irgendwas eintragen was bem öffnen der Seite stehen soll
+              <i class="fas fa-trash"></i>
+              <i class="fas fa-check"></i>
+            </li>
+
+          </ul> 
+        </div>
       </div>
 
       <div class="sidebar" >
         <h2 class="sidebar-Header"> 
       Deine Listen</h2>
-      <li id="eins" class="sidebar-border">Universal - Einkausliste<br><a  href="#1" class="any-linkleft" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'" >Auswählen</a></li>
+      <li id="eins"class="sidebar-border">Universal - Einkausliste<br><a  href="#1" class="any-linkleft" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'" >Auswählen</a></li>
       <li id="zwei"class="sidebar-border">Rewe - Einkausliste<br><a class="any-linkleft" href="#2"onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></li>
       <li id="drei"class="sidebar-border">Penny - Einkausliste<br><a class="any-linkleft" href="#3" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></li>
       <li id="vier"class="sidebar-border">DM - Einkausliste<br><a class="any-linkleft" href="#4" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></li>
       <li id="fuenf"class="sidebar-border">Aldi - Einkausliste<br><a class="any-linkleft" href="#5" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></a></li>
       <li class="sidebar-neueListe">+ Neue Liste</a> </li>
-
       </div>
     </div>
 
@@ -101,11 +107,6 @@
       var listId = "";
       document.getElementById("zwei").addEventListener('click',function(){
         listId = "5db2b146e3d42a0017c30a1b"; 
-        function changeText() {
-        document
-          .querySelector(" h1")
-          .textContent = "Changed";
-      }
       });
       document.getElementById("drei").addEventListener('click',function(){
         listId = "5daf699814fb6000179e69b3"; 
@@ -130,6 +131,83 @@
             .then(json => console.log(json));
             
         });
+
+        document.getElementById("zwei").addEventListener('click',function updateListe(id)
+        {
+            var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
+
+            fetch(apiUrl, {Method: "GET"})
+                .then(response => response.json())
+                //.then(json => console.log(json))
+                .then(showList)
+                .catch(err => console.error(err))
+        });
+        document.getElementById("drei").addEventListener('click',function updateListe(id)
+        {
+            var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
+
+            fetch(apiUrl, {Method: "GET"})
+                .then(response => response.json())
+                //.then(json => console.log(json))
+                .then(showList)
+                .catch(err => console.error(err))
+        });
+        document.getElementById("vier").addEventListener('click',function updateListe(id)
+        {
+            var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
+
+            fetch(apiUrl, {Method: "GET"})
+                .then(response => response.json())
+                //.then(json => console.log(json))
+                .then(showList)
+                .catch(err => console.error(err))
+        });
+        document.getElementById("fuenf").addEventListener('click',function updateListe(id)
+        {
+            var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
+
+            fetch(apiUrl, {Method: "GET"})
+                .then(response => response.json())
+                //.then(json => console.log(json))
+                .then(showList)
+                .catch(err => console.error(err))
+        });
+        function showList (liste)
+        {
+            clearContent();
+            
+            var heading = document.createElement("h1");
+            heading.textContent = liste.name;
+            heading.id = liste._id;
+            heading.className = "inhaltÜberschrift";
+
+            document.getElementById("inhaltDerSeite").appendChild(heading);
+
+            var ul = document.createElement("ul");
+
+            liste.items.forEach(item => {
+                var listItem = document.createElement("li");
+                listItem.textContent = item.name;
+                listItem.className = "listeneinträge";
+
+                ul.appendChild(listItem);
+            });
+
+            document.getElementById("inhaltDerSeite").appendChild(ul);
+        }
+
+        function clearContent()
+        {
+            document.getElementById("inhaltDerSeite").innerHTML="";
+        }
+
+        function newListItem (listenEintrag)
+        {
+            var listenEintrag = document.createElement("li");
+            listenEintrag.textContent = listenEintrag;
+            listenEintrag.className = "listeneinträge";
+            document.getElementById("listeintrag").appendChild(listenEintrag);
+        }
     </script>
   </body>
 </html>
