@@ -105,6 +105,9 @@
     <script>
       
       var listId = "";
+      document.getElementById("eins").addEventListener('click',function(){
+        listId = "5dbc552ced629e00171e2a27"; 
+      });
       document.getElementById("zwei").addEventListener('click',function(){
         listId = "5db2b146e3d42a0017c30a1b"; 
       });
@@ -132,6 +135,16 @@
             
         });
 
+        document.getElementById("eins").addEventListener('click',function updateListe(id)
+        {
+            var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
+
+            fetch(apiUrl, {Method: "GET"})
+                .then(response => response.json())
+                //.then(json => console.log(json))
+                .then(showList)
+                .catch(err => console.error(err))
+        });
         document.getElementById("zwei").addEventListener('click',function updateListe(id)
         {
             var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
