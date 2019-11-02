@@ -56,10 +56,10 @@
         </h2>
        
         <div class="contentinhalt" id="inhaltDerSeite" >
-          <h1 class="contentÜberschrift">Das ist deine Perösnliche Einkaufsliste</h1>
+          <h1 class="contentÜberschrift">Das ist deine Persönliche Einkaufsliste</h1>
           <ul id="listeintrag" class="contenterklärung" style="list-style:upper-roman">  
             <li class="listeneinträge" class="contenterklärung">
-              <p>Vergesse nie wieder ein Einkauf Trage es ganz einfach in einer deiner Listen ein. Wähle auf der linken Seite eine liste aus und 
+              <p>Vergesse nie wieder ein Einkauf. Trage es ganz einfach in einer deiner Listen ein. Wähle auf der linken Seite eine liste aus und 
               trage ein was du benötigst. Klicke auf ein Markensymbol um die neuesten Aktionen zu sehen.
               <br>
               Das ist nicht alles. Niemand wird sein Laptop bei einkaufen dabei haben um die Liste aufzurufen. Und auf dem Smartphone macht es auch kein Spaß.
@@ -69,7 +69,7 @@
               <i class="fas fa-trash" ></i>
               <i class="fas fa-check" ></i>
             </li>
-
+            
           </ul> 
         </div>
       </div>
@@ -83,6 +83,7 @@
       <li id="vier"class="sidebar-border">DM - Einkausliste<br><a class="any-linkleft" href="#4" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></li>
       <li id="fuenf"class="sidebar-border">Aldi - Einkausliste<br><a class="any-linkleft" href="#5" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></a></li>
       <li class="sidebar-neueListe">+ Neue Liste</a> </li>
+      
       </div>
     </div>
 
@@ -138,10 +139,9 @@
                 body: JSON.stringify({ name: item })
             }).then(res => res.json())
             .then(json => console.log(json));
-            
         });
 
-        document.getElementById("eins").addEventListener('click',function updateListe(id)
+        document.getElementById("eins").addEventListener('click',function updateListe()
         {
             var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
 
@@ -151,7 +151,7 @@
                 .then(showList)
                 .catch(err => console.error(err))
         });
-        document.getElementById("zwei").addEventListener('click',function updateListe(id)
+        document.getElementById("zwei").addEventListener('click',function updateListe()
         {
             var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
 
@@ -161,7 +161,7 @@
                 .then(showList)
                 .catch(err => console.error(err))
         });
-        document.getElementById("drei").addEventListener('click',function updateListe(id)
+        document.getElementById("drei").addEventListener('click',function updateListe()
         {
             var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
 
@@ -171,7 +171,7 @@
                 .then(showList)
                 .catch(err => console.error(err))
         });
-        document.getElementById("vier").addEventListener('click',function updateListe(id)
+        document.getElementById("vier").addEventListener('click',function updateListe()
         {
             var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
 
@@ -181,7 +181,7 @@
                 .then(showList)
                 .catch(err => console.error(err))
         });
-        document.getElementById("fuenf").addEventListener('click',function updateListe(id)
+        document.getElementById("fuenf").addEventListener('click',function updateListe()
         {
             var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId;
 
@@ -208,8 +208,8 @@
                 var listItem = document.createElement("li");
                 listItem.textContent = item.name;
                 listItem.className = "listeneinträge";
-
                 ul.appendChild(listItem);
+                
             });
 
             document.getElementById("inhaltDerSeite").appendChild(ul);
@@ -219,14 +219,20 @@
         {
             document.getElementById("inhaltDerSeite").innerHTML="";
         }
-
-        function newListItem (listenEintrag)
+        
+      /*
+        document.getElementById("").addEventListener('click',function deltos()
         {
-            var listenEintrag = document.createElement("li");
-            listenEintrag.textContent = listenEintrag;
-            listenEintrag.className = "listeneinträge";
-            document.getElementById("listeintrag").appendChild(listenEintrag);
-        }
+            listId = ;
+            listitem = ;
+            var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/"+ listitem;
+
+            fetch(apiUrl, {Method: "DELETE"})
+                .then(response => response.json())
+                .then(json => console.log(json))
+                .catch(err => console.error(err))
+        });
+*/
     </script>
   </body>
 </html>
