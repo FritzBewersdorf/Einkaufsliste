@@ -173,3 +173,43 @@ background:#ffffff; /* Hintergrundfarbe */
   
 }
 
+.contentÜberschrift{
+  text-align: center;
+}
+
+.contenterklärung{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.inhaltÜberschrift{
+  text-align: center;
+  color: orange;
+}
+
+.listeneinträge{
+  border: 11px groove  rgb(81, 174, 236);
+  margin-left: 36px;
+  margin-right: 70px;
+  background-color: rgba(7, 7, 7, 0.959);
+  color: white;
+  
+  font-size: 20px;
+  padding-left: 20px;
+  
+  
+}
+
+.viedoanpassen{
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.suchleistelinks{
+  margin-left: 50px;
+  margin-top: 4px;
+}
+
+#li{
+  list-style: upper-alpha;
+}

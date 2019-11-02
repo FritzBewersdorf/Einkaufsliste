@@ -24,7 +24,7 @@
             </a>
           </li> 
           <li>
-            <h1>Zu gut zum vergessen</h1>
+            <h1>Zu gut zum Vergessen</h1>
           </li>
           <li>
             <a href="https://www.marktjagd.de/dm-drogerie-markt:a27" target="blank"><img src="Dm-logo.png" class="dm-logo"></a>
@@ -42,12 +42,12 @@
         <h2 class="contenteintagen" >
             <label >
                 
-                <form id="form" action="#">
+                <form id="form" action="#" class="suchleistelinks">
                    +Eintragen<input type="text" size="120" class="cssdesign" id="itemName"
                    placeholder="+ Neue Position" 
                    onfocus="this.placeholder = ''" 
                    onblur="this.placeholder = '+ Neue Position'">
-                   <button type="submit">Eingabe</button> 
+                   <button type="submit"  >Eingabe</button> 
                    
                  </form>
                </label>
@@ -55,13 +55,19 @@
             </label>
         </h2>
        
-        <div class="contentinhalt" id="inhaltDerSeite">
-          <h1>Liste für alles</h1>
-          <ul id="listeintrag">  
-            <li class="listeneinträge">
-              Hier kann du irgendwas eintragen was bem öffnen der Seite stehen soll
-              <i class="fas fa-trash"></i>
-              <i class="fas fa-check"></i>
+        <div class="contentinhalt" id="inhaltDerSeite" >
+          <h1 class="contentÜberschrift">Das ist deine Perösnliche Einkaufsliste</h1>
+          <ul id="listeintrag" class="contenterklärung" style="list-style:upper-roman">  
+            <li class="listeneinträge" class="contenterklärung">
+              <p>Vergesse nie wieder ein Einkauf Trage es ganz einfach in einer deiner Listen ein. Wähle auf der linken Seite eine liste aus und 
+              trage ein was du benötigst. Klicke auf ein Markensymbol um die neuesten Aktionen zu sehen.
+              <br>
+              Das ist nicht alles. Niemand wird sein Laptop bei einkaufen dabei haben um die Liste aufzurufen. Und auf dem Smartphone macht es auch kein Spaß.
+              Also bestllen sie doch einfach von Zuhause aus Online. Dies ist im Folgendem Viedo erklärt. 
+              <br></p>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/Z66a38IuHS4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="viedoanpassen"></iframe> 
+              <i class="fas fa-trash" ></i>
+              <i class="fas fa-check" ></i>
             </li>
 
           </ul> 
@@ -71,7 +77,7 @@
       <div class="sidebar" >
         <h2 class="sidebar-Header"> 
       Deine Listen</h2>
-      <li id="eins"class="sidebar-border">Universal - Einkausliste<br><a  href="#1" class="any-linkleft" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'" >Auswählen</a></li>
+      <li id="eins"class="sidebar-border" >Universal - Einkausliste<br><a  href="#1" class="any-linkleft" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'" >Auswählen</a></li>
       <li id="zwei"class="sidebar-border">Rewe - Einkausliste<br><a class="any-linkleft" href="#2"onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></li>
       <li id="drei"class="sidebar-border">Penny - Einkausliste<br><a class="any-linkleft" href="#3" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></li>
       <li id="vier"class="sidebar-border">DM - Einkausliste<br><a class="any-linkleft" href="#4" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></li>
@@ -85,7 +91,7 @@
       $(document).ready(function(){
               // .text()
               $("#eins").click(function(){ 
-                $("#topic").text("Das ist deine Universale - Einkausliste"); // Der Inhalt von #topic wird durch den Inhalt von .text() ersetzt
+                $("#topic").text("Das ist deine Universale - Einkaufsliste"); // Der Inhalt von #topic wird durch den Inhalt von .text() ersetzt
               });
 
               $("#zwei").click(function(){ 
