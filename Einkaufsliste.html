@@ -77,7 +77,7 @@
       <div class="sidebar" >
         <h2 class="sidebar-Header"> 
       Deine Listen</h2>
-      <li id="null"class="sidebar-border" >Startseite<br><a  href="file:///Users/philipp/Documents/Hochschule/S_WI/Semester_3/Web-Programmierung/Abgabe_2/Einkaufsliste/Einkaufsliste.html" class="any-linkleft" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'" >Auswählen</a></li>
+      <li id="null"class="sidebar-border" >Startseite<br><a  href="" class="any-linkleft" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'" >Auswählen</a></li>
       <li id="eins"class="sidebar-border" >Universal - Einkausliste<br><a  href="#1" class="any-linkleft" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'" >Auswählen</a></li>
       <li id="zwei"class="sidebar-border">Rewe - Einkausliste<br><a class="any-linkleft" href="#2"onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></li>
       <li id="drei"class="sidebar-border">Penny - Einkausliste<br><a class="any-linkleft" href="#3" onmouseover="this.style.color='#0af0e0'" onmouseout="this.style.color='#FFFFFF'">Auswählen</a></li>
@@ -209,8 +209,29 @@
                 var listItem = document.createElement("li");
                 listItem.textContent = item.name;
                 listItem.className = "listeneinträge";
+                var Knopf = document.createElement("button");
+                Knopf.textContent = "Löschen";
+                var Check = document.createElement("INPUT");
+                Check.setAttribute("type", "checkbox");
+                //var Schrift = document.createElement("p");
+                //Schrift.textContent = "Erledigt?"
+                Knopf.addEventListener('click',function deletos()
+                {
+                    console.log(item._id)
+                    console.log(listId)
+                    var apiUrl2 = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/"+ item._id;
+                    fetch(apiUrl2, {method: 'DELETE',
+                      headers:
+                        {'content-type': 'application/json'}
+                      })
+                        .then(response => response.json())
+                        .then(json => console.log(json))
+                        //.catch(err => console.error(err))
+                });
+                listItem.appendChild(Knopf);
+                //listItem.appendChild(Schrift);
+                listItem.appendChild(Check);
                 ul.appendChild(listItem);
-                
             });
 
             document.getElementById("inhaltDerSeite").appendChild(ul);
@@ -221,19 +242,6 @@
             document.getElementById("inhaltDerSeite").innerHTML="";
         }
         
-      /*
-        document.getElementById("").addEventListener('click',function deltos()
-        {
-            listId = ;
-            listitem = ;
-            var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/"+ listitem;
-
-            fetch(apiUrl, {Method: "DELETE"})
-                .then(response => response.json())
-                .then(json => console.log(json))
-                .catch(err => console.error(err))
-        });
-*/
     </script>
   </body>
 </html>
