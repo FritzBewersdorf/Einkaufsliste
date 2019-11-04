@@ -17,18 +17,18 @@
         <ul>
           <li>
             <a href="https://www.rewe.de/angebote/nationale-angebote/" target="_blank"><img src="Rewe-logo.png" class="rewe-logo" ></a>
-          </li>
-          <li>
+          
+          
             <a href="https://www.mueller.de/prospekte/" target="_blank"><img src="Müller-logo.png" class="müller-logo" >
             </a>
-          </li> 
-          <li>
-            <h1>Zu gut zum Vergessen</h1>
-          </li>
-          <li>
+          
+          
+            <a class="headeroriginal">Zu gut zum Vergessen</a>
+          
+          
             <a href="https://dm.de-angebote.deals/?gclid=EAIaIQobChMIj53mjdnO5QIVFc93Ch0A5wyBEAAYASAAEgI5wfD_BwE" target="blank"><img src="Dm-logo.png" class="dm-logo"></a>
-          </li>
-          <li>
+          
+          
             <a href="https://www.aldi-sued.de/de/angebote/?pk_campaign=01_GEO_ALDI_Brand_Always_On_Exact[NEO]&pk_kwd=aldiangebotediesewoche" target="blank"><img src="aldi-logo.png" class="aldi-logo"></a>
           </li>
         </ul> 
@@ -46,7 +46,7 @@
                    placeholder="+ Neue Position" 
                    onfocus="this.placeholder = ''" 
                    onblur="this.placeholder = '+ Neue Position'">
-                   <button type="submit"  >Eingabe</button> 
+                   <button class="button1" type="submit"  >Eingabe</button> 
                    
                  </form>
                </label>
@@ -56,7 +56,11 @@
        
         <div class="contentinhalt" id="inhaltDerSeite" >
           <h1 class="contentÜberschrift" id="null">Das ist deine persönliche Einkaufsliste</h1>
-          <ul id="listeintrag" class="contenterklärung">  
+          <label class="farbenauswahl" for="colorPicker">Wähle deine Hintergrund- Farbe:</label>
+          <input type="color" value="#e0ffee" id="colorPicker">
+          <code id="colorCode"></code></b>
+          <ul id="listeintrag" class="contenterklärung"> 
+             
             <li class="listeneinträge-Startseite" class="contenterklärung">
               <h3 class="startseiteheader">Startseite</h3>
               <p class="startseitetext"> Vergesse nie wieder ein Einkauf. Trage es ganz einfach in einer deiner Listen ein. Wähle auf der linken Seite eine liste aus und 
@@ -213,6 +217,7 @@
                 Knopf.textContent = "Löschen";
                 var Check = document.createElement("INPUT");
                 Check.setAttribute("type", "checkbox");
+                
                 //var Schrift = document.createElement("p");
                 //Schrift.textContent = "Erledigt?"
                 Knopf.addEventListener('click',function deletos()
@@ -242,6 +247,24 @@
             document.getElementById("inhaltDerSeite").innerHTML="";
         }
         
+
+        
     </script>
+
+    <script>
+    const body = document.querySelector("body");
+    const input = document.getElementById("colorPicker");
+    const colorCode = document.getElementById("colorCode");
+
+    setColor();
+    input.addEventListener("input", setColor);
+
+    function setColor() {
+      body.style.backgroundColor = input.value;
+      colorCode.innerHTML = input.value;
+    }
+    </script>
+
+   
   </body>
 </html>
