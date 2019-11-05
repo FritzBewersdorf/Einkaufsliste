@@ -269,7 +269,6 @@
                   listItem.appendChild(Buttonchecked);
                   Buttonchecked.addEventListener("click", function myFunction()
                   {
-                    console.log("Ich wurde angeklickt");
                     var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/" + Buttonchecked.id;
                     fetch(apiUrl, 
                     {
@@ -289,7 +288,6 @@
                   listItem.appendChild(Buttoncheck);
                   Buttoncheck.addEventListener("click", function functioniere()
                   {
-                    console.log("Button ist noch nicht gekauft");
                     var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/" + Buttoncheck.id;
                     fetch(apiUrl, 
                     {
@@ -306,74 +304,16 @@
                 } 
                 ul.appendChild(listItem);
             })
-              
-            
-            eventListenerSetzen();
 
             document.getElementById("inhaltDerSeite").appendChild(ul);
         };
-
-        function eventListenerSetzen()
-        {
-          var check = document.getElementsByName("Buttoncheck");
-          Array.from(check).forEach(button =>
-          {
-            button.addEventListener("click", event=>
-            {
-              gekauftSetzen(button.id);
-            })        
-          })
-
-          var check = document.getElementsByName("Buttonchecked");
-          Array.from(check).forEach(button =>
-          {
-            button.addEventListener("click", event=>
-            {
-              gekauftSetzen(button.id);
-            })        
-          })
-        }
-
-        function gekaufteSetzen(id)
-            {
-              console.log(id);
-              var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/" + id;
-              fetch(apiUrl, 
-              {
-                  method: "PUT",
-                  headers: {
-                      "Content-Type": "application/json"
-              },
-              body: JSON.stringify({ checked: "true" })
-              })
-            }
-        
-          function gekaufteSetzen(id)
-            {
-              console.log(id);
-              var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/" + id;
-              fetch(apiUrl, 
-              {
-                  method: "PUT",
-                  headers: {
-                      "Content-Type": "application/json"
-              },
-              body: JSON.stringify({ bought: "false" })
-              })
-                .then(response => response.json())
-                .then(showList)
-                .catch(err => console.error(err));
-            }
-
         
 
         function clearContent()
         {
             document.getElementById("inhaltDerSeite").innerHTML="";
         }
-        
-       
-        
+
     </script>
 
     <script>
