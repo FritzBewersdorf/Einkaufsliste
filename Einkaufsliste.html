@@ -144,6 +144,7 @@
 
         document.getElementById("form").addEventListener('submit', function() {
             var item = document.getElementById("itemName").value;
+            document.getElementById("itemName").value = "";
             var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items";
             fetch(apiUrl, {
                 method: "POST",
