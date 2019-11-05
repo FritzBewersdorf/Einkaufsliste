@@ -225,7 +225,7 @@
                 listItem.className = "listeneinträge";
                 var Knopf = document.createElement("button");
                 Knopf.textContent = "Löschen";
-                var Buttoncheck = document.createElement("button");
+                /*var Buttoncheck = document.createElement("button");
                 Buttoncheck.id = item._id;
                 Buttoncheck.className = "actionButtons";
                 Buttoncheck.name = "Buttoncheck";
@@ -239,7 +239,7 @@
                 Buttonchecked.name = "Buttonchecked";
                 var imageButtonchecked = document.createElement("i");
                 imageButtonchecked.className = "fas fa-check-circle";
-                Buttonchecked.appendChild(imageButtonchecked);
+                Buttonchecked.appendChild(imageButtonchecked);*/
                 
                 //var Schrift = document.createElement("p");
                 //Schrift.textContent = "Erledigt?"
@@ -258,7 +258,7 @@
                 });
                 listItem.appendChild(Knopf);
                 //listItem.appendChild(Schrift);
-                if (item.Buttonchecked){listItem.appendChild(Buttonchecked); 
+                /*if (item.Buttonchecked){listItem.appendChild(Buttonchecked); 
                   Buttonchecked.addEventListener('click', function itembuttoncheck ()  
                 {
                   
@@ -294,7 +294,7 @@
                   .then(showList)
                   .catch(err => console.error(err));
           
-                })}
+                })} */
                 
                 
                 ul.appendChild(listItem);
@@ -309,8 +309,60 @@
             document.getElementById("inhaltDerSeite").innerHTML="";
         }
         
+        function changeState (id, checked) {
+          var request = new XMLHttpRequest ();
+          request.open ('PUT', settings.endpoint + "/api/v1/lists/" + listId + "/items/" + item._id, true);
+          request.setRequestHeader('Content-Type', 'application/json; charset =UTF-8');
+          request.send (JSON.stringify ({bought : checked}));
 
+          request.onload =function (){
+            if(this.status >= 200 && this.status < 400){
+              var resData = JSON.parse(this.response);
+              for (var i=0; i< data.lists.length; i++){
+                if(data.selectedList == data.list[i]._id){
+                  data.lists[i] = resData;
+                  break;
+                }
+              }
+              refreshItem ();
+              localStorage.setItem("data", JSON.stringify(data));
+            } else{
+              console.log("Error: " + this.status);
+            }
+            }
+            request.onerror =function(){
+              console.error("Connection Error");
+            }
+          }
         
+
+
+        function addItem(name, id, checked){
+          let ulListe = document.getElementById("ListeEinerEinkaufsliste");
+          let liElem = document.createElement("li");
+          let checkbox = document.createElement ("input");
+          var labelinhalt =name;
+          liElem.className ="ItemEinerEinkaufsliste"
+          liElem.innerHTML = labelinhalt;
+          liElem.id = "it" +id;
+          ulListe.append(liElem);
+          checkbox.type ="checkbox";
+          checkbox.className = "checkBox";
+
+          checkbox.checked =checked;
+          checkbox.setAttribute ('onchange', "changeState ('" +id + "', this.checked)")
+
+          liElem.append(checkbox);
+
+          checkbox.addEventListener ('click' function (event){
+              event.stopPropagation ();
+          });
+          
+          liElem.addEventListener('click', function (){
+            deleteItem(id);
+          });
+          
+        }
     </script>
 
     <script>
