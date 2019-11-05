@@ -52,7 +52,16 @@
                </label>
               </form>
             </label>
-        </h2>
+          </h2>
+          <!--<div class="datumsanzeige">
+            <h1 >Datumsauswahl</h1>
+            <div class="field " >
+              <label for="date">
+                <span class="field-label">Wähle ein Datum:</span><br>
+              </label>
+              <input type="date" id="date" name="date" value="" placeholder="DD/MM/YYYY">
+            </div>
+          </div>-->
        
         <div class="contentinhalt" id="inhaltDerSeite" >
           <h1 class="contentÜberschrift" id="null">Das ist deine persönliche Einkaufsliste</h1>
@@ -210,13 +219,27 @@
             var ul = document.createElement("ul");
 
             liste.items.forEach(item => {
+                
                 var listItem = document.createElement("li");
                 listItem.textContent = item.name;
                 listItem.className = "listeneinträge";
                 var Knopf = document.createElement("button");
                 Knopf.textContent = "Löschen";
-                var Check = document.createElement("INPUT");
-                Check.setAttribute("type", "checkbox");
+                var Buttoncheck = document.createElement("button");
+                Buttoncheck.id = item._id;
+                Buttoncheck.className = "actionButtons";
+                Buttoncheck.name = "Buttoncheck";
+                var imageButtoncheck = document.createElement("i");
+                imageButtoncheck.className = "fas fa-circle";
+                Buttoncheck.appendChild(imageButtoncheck);
+
+                var Buttonchecked = document.createElement("button");
+                Buttonchecked.id = item._id;
+                Buttonchecked.className = "actionButtons";
+                Buttonchecked.name = "Buttonchecked";
+                var imageButtonchecked = document.createElement("i");
+                imageButtonchecked.className = "fas fa-check-circle";
+                Buttonchecked.appendChild(imageButtonchecked);
                 
                 //var Schrift = document.createElement("p");
                 //Schrift.textContent = "Erledigt?"
@@ -235,8 +258,37 @@
                 });
                 listItem.appendChild(Knopf);
                 //listItem.appendChild(Schrift);
-                listItem.appendChild(Check);
+                if (item.bought){listItem.appendChild(Buttonchecked); 
+                  Knopf.addEventListener('click',function deletos()
+                {
+                    console.log(item._id)
+                    console.log(listId)
+                    var apiUrl2 = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/"+ item._id;
+                    fetch(apiUrl2, {method: 'PUT',
+                      headers:
+                        {'content-type': 'application/json'}
+                      })
+                        .then(response => response.json())
+                        .then(json => console.log(json))
+                        //.catch(err => console.error(err))
+                });}
+                else{listItem.appendChild(Buttoncheck);
+                  Knopf.addEventListener('click',function deletos()
+                {
+                    console.log(item._id)
+                    console.log(listId)
+                    var apiUrl2 = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/"+ item._id;
+                    fetch(apiUrl2, {method: 'PUT',
+                      headers:
+                        {'content-type': 'application/json'}
+                      })
+                        .then(response => response.json())
+                        .then(json => console.log(json))
+                        //.catch(err => console.error(err))
+                });}
+                
                 ul.appendChild(listItem);
+                
             });
 
             document.getElementById("inhaltDerSeite").appendChild(ul);
@@ -264,7 +316,7 @@
       colorCode.innerHTML = input.value;
     }
     </script>
-
+ 
    
   </body>
 </html>
