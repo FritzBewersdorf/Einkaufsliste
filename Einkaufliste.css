@@ -297,7 +297,7 @@ input[type="checkbox" i] {
 }
 
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 850px){
   .sidebar {font-size: 50%}
   .content {font-size: 40%}
   .header {font-size: 30%}
@@ -323,8 +323,8 @@ input[type="checkbox" i] {
   .sidebar-Header{text-align: left}
 }
 
-@media only screen and (max-width: 1350px){
-  /* .sidebar {font-size: 80%}
+@media only screen and ( min-width: 850px ) and ( max-width: 1350px ){
+  .sidebar {font-size: 80%}
   .content {font-size: 80%}
   .header {font-size: 80%}
   .box {grid-template-rows: 10% 1fr; grid-template-columns: 20% 88%;}
@@ -341,4 +341,4 @@ input[type="checkbox" i] {
   .listeneinträge{font-size: 150%;}
   .button1{font-size: 80%}
   .datumsanzeige{margin-left: 39%}
-} */
+} 
