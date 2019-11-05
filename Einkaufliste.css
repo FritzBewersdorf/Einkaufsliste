@@ -41,19 +41,14 @@ margin-left: 8%;
 
 
 }
-.müller-logo{
-height: 30px;
-width: 125px;
+.penny-logo{
+height: 70px;
+width: 80px;
 margin-left: 8%;
 
 
 }
-.überschrift{
-width: 250px;
-height: 100px;
-margin-left: 550px;
-padding-top: 10px;
-}
+
 .dm-logo{
 height: 70px;
 width: 100px;
@@ -64,13 +59,6 @@ margin-left: 8%;
 height: 80px;
 width: 70px;
 margin-left: 8%;
-}
-.headerSchrift{
-align-items: center;
-justify-content: center;
-display: flex;
-
-
 }
 
 .sidebar-Header{
@@ -303,7 +291,7 @@ input[type="checkbox" i] {
   .header {font-size: 30%}
   .box {grid-template-rows: 7% 1fr; grid-template-columns: 20% 88%;}
   .rewe-logo {height: 27px; width: 30px;margin-left: 4%;}
-  .müller-logo{height: 12px; width: 48px;margin-left: 4%;}
+  .penny-logo{height: 25px; width: 30px;margin-left: 4%;}
   .dm-logo{height: 27px; width: 39px;margin-left: 4%;}
   .aldi-logo{height: 31px; width: 27px;margin-left: 5%;}
   .cssdesign {margin-left: 10px; font-size: 50%; width: 60px;  }
@@ -318,21 +306,22 @@ input[type="checkbox" i] {
   .headeroriginal{margin-left: 4%}
   .startseitetext{margin-left: 0px; margin-right: 5px;}
   .listeneinträge {margin-left: 5px; padding-top: 8px;}
-  .button{font-size: small;}
+  .button{font-size: small; margin-left: 10px;}
   .input [type="checkbox" i] {font-size: small; margin-left: 10px;}
   .sidebar-Header{text-align: left}
+  
 }
 
 @media only screen and ( min-width: 850px ) and ( max-width: 1350px ){
   .sidebar {font-size: 80%}
   .content {font-size: 80%}
   .header {font-size: 80%}
-  .box {grid-template-rows: 10% 1fr; grid-template-columns: 20% 88%;}
+  .box {grid-template-rows: 14% 1fr; grid-template-columns: 20% 88%;}
   .rewe-logo {height: 40px; width: 45px;margin-left: 8%;}
-  .müller-logo{height: 18px; width: 72px;margin-left: 8%;}
+  .penny-logo{height: 55px; width: 60px;margin-left: 8%;}
   .dm-logo{height: 39px; width: 60px;margin-left: 8%;}
   .aldi-logo{height: 45px; width: 39px;margin-left: 8%;}
-  .cssdesign {margin-left: 250px; font-size: 50%; width: 350px;  }
+  .cssdesign {margin-left: 150px; font-size: 50%; width: 350px;  }
   .suchleistelinks{margin-left: 5px;}
   .listeneinträge-Startseite{font-size: 140%; }
   .viedoanpassen {margin-top: 50px;margin-left: 25%; margin-bottom: 20px;text-align: center;width: 400px; height: 300px;}
