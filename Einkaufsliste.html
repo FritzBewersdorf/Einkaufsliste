@@ -151,8 +151,10 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ name: item })
-            }).then(res => res.json())
-            .then(json => console.log(json));
+            })
+                .then(response => response.json())
+                .then(showList)
+                .catch(err => console.error(err))
         });
 
         document.getElementById("eins").addEventListener('click',function updateListe()
@@ -208,7 +210,7 @@
         function showList (liste)
         {
             clearContent();
-            
+            console.log("Liste wird neu geladen");
             var heading = document.createElement("h1");
             heading.textContent = liste.name;
             heading.id = liste._id;
@@ -231,20 +233,20 @@
 
               var Buttoncheck = document.createElement("button");
               Buttoncheck.id = item._id;
-              Buttoncheck.textContent = "Benutzt"
+              //Buttoncheck.textContent = "Unerledigt"
               Buttoncheck.className = "actionButtons";
               Buttoncheck.name = "Buttoncheck";
-              var imageButtoncheck = document.createElement("i");
-              imageButtoncheck.className = "fas fa-circle";
+              var imageButtoncheck = new Image(20, 20);
+              imageButtoncheck.src = "Ohne.png";
               Buttoncheck.appendChild(imageButtoncheck);
 
               var Buttonchecked = document.createElement("button");
               Buttonchecked.id = item._id;
-              Buttonchecked.textContent = "Anders"
+              //Buttonchecked.textContent = "Erledigt"
               Buttonchecked.className = "actionButtons";
               Buttonchecked.name = "Buttonchecked";
-              var imageButtonchecked = document.createElement("i");
-              imageButtonchecked.className = "fas fa-check-circle";
+              var imageButtonchecked = new Image(20, 20);
+              imageButtonchecked.src = "Check.png";
               Buttonchecked.appendChild(imageButtonchecked);
               
               Knopf.addEventListener('click',function deletos()
@@ -255,19 +257,51 @@
                   fetch(apiUrl2, {method: 'DELETE',
                     headers:
                       {'content-type': 'application/json'}
-                    })
+                    })      
                       .then(response => response.json())
-                      .then(json => console.log(json))
-                      //.catch(err => console.error(err))
+                      .then(showList)
+                      .catch(err => console.error(err))
               });
               listItem.appendChild(Knopf);
               if (item.bought)
                 {
-                  listItem.appendChild(Buttonchecked)
+                  listItem.appendChild(Buttonchecked);
+                  Buttonchecked.addEventListener("click", function myFunction()
+                  {
+                    console.log("Ich wurde angeklickt");
+                    var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/" + Buttonchecked.id;
+                    fetch(apiUrl, 
+                    {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ bought: "false" })
+                    })
+                    .then(response => response.json())
+                    .then(showList)
+                    .catch(err => console.error(err))
+                  })
                 }
               else 
                 {
-                  listItem.appendChild(Buttoncheck)
+                  listItem.appendChild(Buttoncheck);
+                  Buttoncheck.addEventListener("click", function functioniere()
+                  {
+                    console.log("Button ist noch nicht gekauft");
+                    var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/" + Buttoncheck.id;
+                    fetch(apiUrl, 
+                    {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ bought: "true" })
+                    })
+                      .then(response => response.json())
+                      .then(showList)
+                      .catch(err => console.error(err))
+                        })
                 } 
                 ul.appendChild(listItem);
             })
@@ -294,12 +328,12 @@
           {
             button.addEventListener("click", event=>
             {
-              gekaufteSetzen(button.id);
+              gekauftSetzen(button.id);
             })        
           })
         }
 
-        function gekauftSetzen(id)
+        function gekaufteSetzen(id)
             {
               console.log(id);
               var apiUrl = "https://shopping-lists-api.herokuapp.com/api/v1/lists/" + listId + "/items/" + id;
@@ -323,8 +357,11 @@
                   headers: {
                       "Content-Type": "application/json"
               },
-              body: JSON.stringify({ checked: "false" })
+              body: JSON.stringify({ bought: "false" })
               })
+                .then(response => response.json())
+                .then(showList)
+                .catch(err => console.error(err));
             }
 
         
